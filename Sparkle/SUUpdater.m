@@ -109,7 +109,12 @@ static NSString *const SUUpdaterDefaultsObservationContext = @"SUUpdaterDefaults
 
         // Saving-the-developer-from-a-stupid-mistake-check:
         BOOL hasPublicDSAKey = [host publicDSAKey] != nil;
-        BOOL isMainBundle = [bundle isEqualTo:[NSBundle mainBundle]];
+
+        // >>>>>>>>>>>>>>>>> CHANGED BY ARTILLERY >>>>>>>>>>>>>>>>>>>>>>>
+        // Since we run a Patcher inside of a the main app, these mainBundle checks get in the way.
+        BOOL isMainBundle = true; // [bundle isEqualTo:[NSBundle mainBundle]];
+        // <<<<<<<<<<<<<<<<<<<<< END CHANGES <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
         BOOL hostIsCodeSigned = [SUCodeSigningVerifier hostApplicationIsCodeSigned];
         BOOL servingOverHttps = [[[[self feedURL] scheme] lowercaseString] isEqualToString:@"https"];
         if (!isMainBundle && !hasPublicDSAKey) {
