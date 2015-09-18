@@ -444,6 +444,20 @@ static NSString *const SUUpdaterDefaultsObservationContext = @"SUUpdaterDefaults
     return [self.host boolForUserDefaultsKey:SUAutomaticallyUpdateKey];
 }
 
+- (void)setAutomaticallyInstallUpdates:(BOOL)automaticallyInstalls
+{
+  [self.host setBool:automaticallyInstalls forUserDefaultsKey:SUAutomaticallyInstallKey];
+}
+
+- (BOOL)automaticallyInstallUpdates
+{
+  if ([self.host objectForInfoDictionaryKey:SUAutomaticallyInstallKey] &&
+      [self.host boolForInfoDictionaryKey:SUAutomaticallyInstallKey] == NO) {
+    return NO;
+  }
+  return [self.host boolForUserDefaultsKey:SUAutomaticallyInstallKey];
+}
+
 - (void)setFeedURL:(NSURL *)feedURL
 {
     if (![NSThread isMainThread])

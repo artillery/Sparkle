@@ -41,6 +41,7 @@ extern NSString *const SUExpectsDSASignatureKey;
 extern NSString *const SUPublicDSAKeyKey;
 extern NSString *const SUPublicDSAKeyFileKey;
 extern NSString *const SUAutomaticallyUpdateKey;
+extern NSString *const SUAutomaticallyInstallKey;
 extern NSString *const SUAllowsAutomaticUpdatesKey;
 extern NSString *const SUEnableAutomaticChecksKey;
 extern NSString *const SUEnableAutomaticChecksKeyOld;
